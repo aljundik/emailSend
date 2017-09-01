@@ -1,6 +1,12 @@
 var express = require("express");
+require("./models/User");
+var mongoose = require("mongoose");
 require("./services/passport");
 var authRoutes = require("./routes/authRoutes");
+
+mongoose.connect("mongodb://localhost/test");
+
+
 
 
 
@@ -21,6 +27,7 @@ app.listen(app.get("port"), function() { // run and listen to incoming requests 
 
 
 /*
+
 
 
 
