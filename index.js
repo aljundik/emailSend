@@ -1,14 +1,27 @@
 var express = require("express");
-var app = express();
-
-app.set("port", process.env.PORT || 3000);
-
+require("./services/passport");
+var authRoutes = require("./routes/authRoutes");
 
 
-app.get('/', (req,res)=> {
-  res.send({hi: 'there'});
+
+var app = express(); // create an obj of type express
+require("./routes/authRoutes")(app);
+
+
+
+
+
+
+app.set("port", process.env.PORT || 3000); // set up the port to be automatic or use the port 3000
+
+
+app.listen(app.get("port"), function() { // run and listen to incoming requests to the server
+    console.log("Server started on port " + app.get("port"));
 });
 
-app.listen(app.get("port"), function() {
-	console.log("Server started on port " + app.get("port"));
-});
+
+/*
+
+
+
+*/
